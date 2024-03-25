@@ -28,7 +28,7 @@ public partial class @Tap: IInputActionCollection2, IDisposable
             ""id"": ""f9f12b72-ac73-4964-8f94-0de38a2a9c00"",
             ""actions"": [
                 {
-                    ""name"": ""Touch"",
+                    ""name"": ""TouchA"",
                     ""type"": ""PassThrough"",
                     ""id"": ""90374b86-6009-4c0f-b811-039016feb502"",
                     ""expectedControlType"": """",
@@ -63,7 +63,7 @@ public partial class @Tap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Touch"",
+                    ""action"": ""TouchA"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -96,7 +96,7 @@ public partial class @Tap: IInputActionCollection2, IDisposable
 }");
         // TapController
         m_TapController = asset.FindActionMap("TapController", throwIfNotFound: true);
-        m_TapController_Touch = m_TapController.FindAction("Touch", throwIfNotFound: true);
+        m_TapController_TouchA = m_TapController.FindAction("TouchA", throwIfNotFound: true);
         m_TapController_Presset = m_TapController.FindAction("Presset", throwIfNotFound: true);
         m_TapController_Position = m_TapController.FindAction("Position", throwIfNotFound: true);
     }
@@ -160,14 +160,14 @@ public partial class @Tap: IInputActionCollection2, IDisposable
     // TapController
     private readonly InputActionMap m_TapController;
     private List<ITapControllerActions> m_TapControllerActionsCallbackInterfaces = new List<ITapControllerActions>();
-    private readonly InputAction m_TapController_Touch;
+    private readonly InputAction m_TapController_TouchA;
     private readonly InputAction m_TapController_Presset;
     private readonly InputAction m_TapController_Position;
     public struct TapControllerActions
     {
         private @Tap m_Wrapper;
         public TapControllerActions(@Tap wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Touch => m_Wrapper.m_TapController_Touch;
+        public InputAction @TouchA => m_Wrapper.m_TapController_TouchA;
         public InputAction @Presset => m_Wrapper.m_TapController_Presset;
         public InputAction @Position => m_Wrapper.m_TapController_Position;
         public InputActionMap Get() { return m_Wrapper.m_TapController; }
@@ -179,9 +179,9 @@ public partial class @Tap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TapControllerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TapControllerActionsCallbackInterfaces.Add(instance);
-            @Touch.started += instance.OnTouch;
-            @Touch.performed += instance.OnTouch;
-            @Touch.canceled += instance.OnTouch;
+            @TouchA.started += instance.OnTouchA;
+            @TouchA.performed += instance.OnTouchA;
+            @TouchA.canceled += instance.OnTouchA;
             @Presset.started += instance.OnPresset;
             @Presset.performed += instance.OnPresset;
             @Presset.canceled += instance.OnPresset;
@@ -192,9 +192,9 @@ public partial class @Tap: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(ITapControllerActions instance)
         {
-            @Touch.started -= instance.OnTouch;
-            @Touch.performed -= instance.OnTouch;
-            @Touch.canceled -= instance.OnTouch;
+            @TouchA.started -= instance.OnTouchA;
+            @TouchA.performed -= instance.OnTouchA;
+            @TouchA.canceled -= instance.OnTouchA;
             @Presset.started -= instance.OnPresset;
             @Presset.performed -= instance.OnPresset;
             @Presset.canceled -= instance.OnPresset;
@@ -220,7 +220,7 @@ public partial class @Tap: IInputActionCollection2, IDisposable
     public TapControllerActions @TapController => new TapControllerActions(this);
     public interface ITapControllerActions
     {
-        void OnTouch(InputAction.CallbackContext context);
+        void OnTouchA(InputAction.CallbackContext context);
         void OnPresset(InputAction.CallbackContext context);
         void OnPosition(InputAction.CallbackContext context);
     }

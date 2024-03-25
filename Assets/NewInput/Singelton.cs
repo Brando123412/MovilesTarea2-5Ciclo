@@ -6,13 +6,16 @@ public class Singelton<T> : MonoBehaviour
     where T : Component
 {
     private static T _instance ;
+    
     public static T Instance
     {
+
         get
         {
             if(_instance == null)
             {
-                var objs = FindAnyObjectByType(typeof(T)) as T[];
+                var objs = FindObjectsOfType(typeof(T)) as T[];
+                Debug.Log(objs.Length);
                 if(objs.Length >0)  
                 {
                     _instance = objs[0];

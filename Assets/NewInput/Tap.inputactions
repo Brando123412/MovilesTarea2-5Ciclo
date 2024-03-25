@@ -6,7 +6,7 @@
             "id": "f9f12b72-ac73-4964-8f94-0de38a2a9c00",
             "actions": [
                 {
-                    "name": "Touch",
+                    "name": "TouchA",
                     "type": "PassThrough",
                     "id": "90374b86-6009-4c0f-b811-039016feb502",
                     "expectedControlType": "",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "TouchA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

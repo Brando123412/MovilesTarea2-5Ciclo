@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 public class Prueba : MonoBehaviour
 {
-    private InputManager inputManager;
+    InputManager inputManager;
     Camera cameraMain;  
     private void Awake()
     {
