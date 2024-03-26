@@ -18,11 +18,9 @@ public class LogicaPruebas : MonoBehaviour
     [SerializeField] Vector2 positionSpanw;
 
     [SerializeField] Touch touch;
-    [SerializeField] GameObject touchTarjet;   //line renderer
+    [SerializeField] GameObject touchTarjet; 
 
     [Header("Pruebas para Distance")]
-    [SerializeField] Vector3 puntoA;
-    [SerializeField] Vector3 puntoB;
     [SerializeField] float distanceAB;
     [SerializeField] float gaa;
 
@@ -37,7 +35,6 @@ public class LogicaPruebas : MonoBehaviour
     }
     void Update()
     {
-        // Verificar si hay al menos un toque en la pantalla
         if (Input.touchCount > 0)
         {
             // Obtener el primer toque
@@ -48,7 +45,6 @@ public class LogicaPruebas : MonoBehaviour
                 if (touch.phase == TouchPhase.Began)
                 {
                     isTouch = true;
-                    puntoA= positionSpanw;
                     if (timeTouch == 0)
                     {
                         timeTouch = time;
@@ -56,7 +52,6 @@ public class LogicaPruebas : MonoBehaviour
                 }
                 if (isTouch && touch.phase == TouchPhase.Ended)
                 {
-                    puntoB= positionSpanw;
                     isTouch = false;
                     cantidadTouch++;
                 }
@@ -69,18 +64,12 @@ public class LogicaPruebas : MonoBehaviour
 
         touchPosition = touch.position;
         positionSpanw = Camera.main.ScreenToWorldPoint(touchPosition);
-        //touchTarjet.transform.position = new Vector3(positionSpanw.x, positionSpanw.y, 0);
 
         time += Time.deltaTime;
         if (timeTouch != 0)
         {
             gaa = time - timeTouch;
         }
-        /*if (!isTouch)
-        {
-            puntoA = Vector3.zero;
-            puntoB = Vector3.zero;
-        }  */
         if (gaa >= 0.29f && gaa <= 0.31f)
         {
             Debug.Log("tiempo");
@@ -113,42 +102,6 @@ public class LogicaPruebas : MonoBehaviour
                 EliminarTodosLosHijos();
             }
         }
-        /*if (gaa > 0.31f && isTouch)
-        {
-            gaa = 0;
-            /*print("aun se preciona");
-            if (!isTouch)
-            {
-                gaa = 0;
-                print("draw");
-            }  
-        } */
-        /*
-        else if (gaa > 0.31f )
-        {
-            print("suelto");
-            cantidadTouch = 0;
-            timeTouch = 0;
-            gaa =0;
-        }    */
-        /*else if (time - timeTouch >= 0.32f && time - timeTouch <= 1 && cantidadTouch == 0 )
-        {
-            if (distanceAB > 1.0f)
-            {
-                Debug.Log("Swipe");
-            }
-
-            cantidadTouch = 0;
-            timeTouch = 0;
-        }
-        if (time - timeTouch >= 1.1f && cantidadTouch == 0)
-        {
-            Debug.Log("Movers");
-            MovedObject();
-            cantidadTouch = 0;
-            timeTouch = 0;
-        }      */
-        distanceAB = Vector2.Distance(puntoA,puntoB);
     }
     void DeleteObject()
     {

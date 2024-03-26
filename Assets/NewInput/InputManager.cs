@@ -32,7 +32,7 @@ public class InputManager : Singelton<InputManager>
         Debug.Log("Inicio" + controlTaps.TapController.Position.ReadValue<Vector2>());
         if (OnStartTouch != null)
         {
-            OnStartTouch(controlTaps.TapController.Position.ReadValue<Vector2>(), (float)context.startTime);
+            OnStartTouch(controlTaps.TapController.Position.ReadValue<Vector2>(), Time.time);
         }
     }
     void EndTouch(InputAction.CallbackContext context)
@@ -40,7 +40,7 @@ public class InputManager : Singelton<InputManager>
         Debug.Log("End" + controlTaps.TapController.Position.ReadValue<Vector2>());  
         if (OnEndTouch != null)
         {
-            OnEndTouch(controlTaps.TapController.Position.ReadValue<Vector2>(), (float)context.time);
+            OnEndTouch(controlTaps.TapController.Position.ReadValue<Vector2>(), Time.time);
         }
     }
 }

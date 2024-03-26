@@ -12,7 +12,7 @@ public class Singelton<T> : MonoBehaviour
         {
             if(_instance == null)
             {
-                var objs = FindAnyObjectByType(typeof(T)) as T[];
+                var objs = FindObjectsOfType(typeof(T)) as T[];
                 if(objs.Length >0)  
                 {
                     _instance = objs[0];
